@@ -1,22 +1,25 @@
-# AI Factory Intelligence Command Center - dependencies (Python 3.12)
-pandas
-numpy
-matplotlib
-plotly
-scikit-learn
-xgboost
-tensorflow            # local training; for deployment see requirements-deploy.txt
-opencv-python-headless
-pillow
-shap
-mlflow
-streamlit
-fpdf2
-sentence-transformers
-faiss-cpu
-groq
-kaggle
-python-dotenv
-joblib
-tabulate
-pypdf
+# ── Deployment / runtime requirements ────────────────────────────────────────
+# Used by Streamlit Community Cloud & Hugging Face Spaces to run app/streamlit_app.py.
+# For local model TRAINING use requirements-dev.txt (adds mlflow, xgboost, kaggle,
+# full tensorflow, opencv, plotly, pypdf, pytest).
+#
+# Pins: the three lines that must match the committed artifacts are pinned exactly
+# (the .keras models were saved with TF 2.21; the .joblib models/SHAP explainer
+# were pickled with scikit-learn 1.9 / shap 0.52). Everything else floats.
+
+streamlit>=1.40
+numpy>=2.2,<2.6
+pandas>=2.2
+matplotlib>=3.8
+pillow>=10.0
+joblib>=1.4
+
+scikit-learn==1.9.0          # must match the pickled tabular models
+shap==0.52.0                 # must match the pickled SHAP explainer
+tensorflow-cpu==2.21.0       # must match the saved .keras models (CNN + LSTM)
+
+sentence-transformers>=3.0,<7
+faiss-cpu>=1.9
+groq>=0.11
+fpdf2>=2.8
+python-dotenv>=1.0

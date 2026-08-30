@@ -176,7 +176,7 @@ examples, RNF unlearnable by construction — both discussed),
 ## 8. Running it
 
 ```bash
-pip install -r requirements.txt          # already satisfied in the grading env
+pip install -r requirements-dev.txt      # full training stack (deploy uses requirements.txt)
 # .env must contain: GROQ_API_KEY=...
 
 python src/data/verify_setup.py           # Block 1  - data check
@@ -199,33 +199,24 @@ mlflow ui --backend-store-uri sqlite:///mlflow.db   # experiment tracking
 
 ## 9. Deployment
 
-The repo is deploy-ready. `.gitignore` excludes the 123 MB image corpus, the
-MLflow store and secrets; the app falls back to `data/sample_images/` (80
-committed casting photos) and reads `GROQ_API_KEY` from process env → `.env` →
-`st.secrets`.
+Full step-by-step: **[`DEPLOY_STREAMLIT.md`](DEPLOY_STREAMLIT.md)**.
 
-**Hugging Face Spaces (recommended — 16 GB RAM free, the full stack fits):**
-1. Create a Space → SDK **Streamlit**.
-2. Push this repo. Rename `requirements-deploy.txt` → `requirements.txt` in the
-   Space (CPU-only TensorFlow) or add it as `requirements.txt`.
-3. Space **Settings → Variables and secrets →** add `GROQ_API_KEY`.
-4. Set the app file to `app/streamlit_app.py` (add to `README.md` front-matter or
-   Space config: `app_file: app/streamlit_app.py`).
+The repo is deploy-ready: `requirements.txt` is the lean runtime set
+(`tensorflow-cpu`, no mlflow/xgboost/opencv); `models_registry/` and
+`data/processed/rag/` are committed so **the server runs no training**; the app
+falls back to `data/sample_images/` (80 photos) and reads `GROQ_API_KEY` from
+env → `.env` → `st.secrets`. `.gitignore` keeps out the 123 MB image corpus, the
+MLflow store and the key.
 
-**Streamlit Community Cloud:** same repo; main file `app/streamlit_app.py`;
-paste `GROQ_API_KEY` into *Secrets*. Note the free tier is **1 GB RAM** —
-TensorFlow + FAISS + the loaded models run close to that ceiling; if it OOMs,
-use Spaces.
+**Streamlit Community Cloud** — https://share.streamlit.io → *Create app*:
+repo `Baneenraza/hackathon`, branch `main`, main file `app/streamlit_app.py`;
+Advanced settings → Python `3.12` and paste `GROQ_API_KEY = "gsk_..."` into
+*Secrets*. Free tier ≈ 2.7 GB RAM — TensorFlow + PyTorch + models sit near
+1.5–2 GB, usually fine; untick unused modalities or reboot if it OOMs.
 
-```bash
-git init && git add -A && git commit -m "AI Factory Command Center"
-git remote add origin <your-repo>
-git push -u origin main
-```
-
-Local model artifacts (`models_registry/*.keras`, `*.joblib`, `data/processed/rag/`)
-**are committed** so the deployed app needs no training step. To regenerate them,
-run the pipeline in §8.
+**Hugging Face Spaces** (fallback, 16 GB RAM) — SDK **Streamlit**, same repo,
+`app_file: app/streamlit_app.py` in the Space README front-matter, add
+`GROQ_API_KEY` under *Settings → Variables and secrets*.
 
 ## 10. Repo layout
 
