@@ -1,0 +1,9 @@
+# Keep line endings LF in the repo so Linux deploy hosts read config correctly
+* text=auto eol=lf
+*.png binary
+*.jpeg binary
+*.jpg binary
+*.pdf binary
+*.keras binary
+*.joblib binary
+*.index binary
