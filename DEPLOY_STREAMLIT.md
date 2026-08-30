@@ -43,12 +43,23 @@ git push -u origin main
    | Main file path | `app/streamlit_app.py` |
    | App URL | pick anything, e.g. `ai-factory-command-center` |
 3. Click **Advanced settings**:
-   - **Python version:** `3.12` (or `3.11` — both fine).
+   - **Python version:** `3.12` — **REQUIRED. Do not use 3.13 or 3.14.**
+     TensorFlow has no wheels for 3.13+ and the build will fail. The repo also
+     ships a `.python-version` file pinning 3.12, but set the dropdown too.
    - **Secrets:** paste this (TOML format), with your real key:
      ```toml
      GROQ_API_KEY = "gsk_your_real_key_here"
      ```
 4. Click **Deploy**.
+
+### Already created the app and it failed on `tensorflow`?
+
+That means it built on Python 3.13/3.14. Fix without recreating:
+1. `git push` the latest commit (adds `.python-version` = 3.12 and cleaner
+   requirements).
+2. In the app's page → **⋮ menu → Settings → General → Python version → `3.12`**
+   → **Save**.
+3. **⋮ menu → Reboot app.** It rebuilds from scratch on 3.12.
 
 ---
 

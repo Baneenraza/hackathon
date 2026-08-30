@@ -1,25 +1,26 @@
-# ── Deployment / runtime requirements ────────────────────────────────────────
-# Used by Streamlit Community Cloud & Hugging Face Spaces to run app/streamlit_app.py.
-# For local model TRAINING use requirements-dev.txt (adds mlflow, xgboost, kaggle,
-# full tensorflow, opencv, plotly, pypdf, pytest).
+# ── Deployment / runtime requirements (Streamlit Community Cloud, HF Spaces) ──
 #
-# Pins: the three lines that must match the committed artifacts are pinned exactly
-# (the .keras models were saved with TF 2.21; the .joblib models/SHAP explainer
-# were pickled with scikit-learn 1.9 / shap 0.52). Everything else floats.
+# REQUIRES PYTHON 3.12 (or 3.11). TensorFlow has NO wheels for Python 3.13/3.14 —
+# set the Python version to 3.12 in the Streamlit Cloud app settings, or this
+# build will fail on tensorflow-cpu. A .python-version file (3.12) is included.
+#
+# Only three packages are pinned exactly — they must match the committed model
+# artifacts (.keras saved with TF 2.21; .joblib / SHAP explainer pickled with
+# scikit-learn 1.9 / shap 0.52). Everything else floats.
 
-streamlit>=1.40
-numpy>=2.2,<2.6
-pandas>=2.2
-matplotlib>=3.8
-pillow>=10.0
-joblib>=1.4
+streamlit
+numpy<2.6
+pandas<3
+matplotlib
+pillow
+joblib
 
-scikit-learn==1.9.0          # must match the pickled tabular models
-shap==0.52.0                 # must match the pickled SHAP explainer
-tensorflow-cpu==2.21.0       # must match the saved .keras models (CNN + LSTM)
+scikit-learn==1.9.0
+shap==0.52.0
+tensorflow-cpu==2.21.0
 
-sentence-transformers>=3.0,<7
-faiss-cpu>=1.9
-groq>=0.11
-fpdf2>=2.8
-python-dotenv>=1.0
+sentence-transformers
+faiss-cpu
+groq
+fpdf2
+python-dotenv

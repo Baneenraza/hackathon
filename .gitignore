@@ -64,7 +64,7 @@ htmlcov/
 venv/
 env/
 ENV/
-.python-version
+# NOTE: .python-version IS committed on purpose (pins Streamlit Cloud to 3.12)
 
 # ── Notebooks ────────────────────────────────────────────────
 .ipynb_checkpoints/
