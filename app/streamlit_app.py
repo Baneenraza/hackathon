@@ -102,6 +102,17 @@ st.warning("**Decision support only.** Every prediction is probabilistic and "
 orch = get_orchestrator()
 ss = st.session_state
 
+if not C.load_groq_key():
+    st.error(
+        "**GROQ_API_KEY is not set.** The KnowledgeAgent (RAG answer generation) "
+        "needs it.\n\n"
+        "On Streamlit Community Cloud: open **Manage app → ⋮ → Settings → "
+        "Secrets** and add:\n\n"
+        "```toml\nGROQ_API_KEY = \"gsk_your_key_here\"\n```\n\n"
+        "then **Reboot app**. Locally: put it in a `.env` file at the repo root."
+    )
+    st.stop()
+
 with st.sidebar:
     st.header("Incident inputs")
     asset = st.text_input("Machine / asset ID", "CNC-L-02")

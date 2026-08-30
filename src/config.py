@@ -52,7 +52,12 @@ def load_groq_key():
     if not key:
         try:
             import streamlit as st
-            key = st.secrets.get("GROQ_API_KEY")
+            try:
+                key = st.secrets["GROQ_API_KEY"]
+            except Exception:
+                key = st.secrets.get("GROQ_API_KEY") if hasattr(st, "secrets") else None
         except Exception:
             pass
-    return key.strip().strip('"') if key else None
+    if key:
+        key = str(key).strip().strip('"').strip("'")
+    return key or None
