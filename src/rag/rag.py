@@ -3,10 +3,16 @@
 RAGPipeline.answer(query)            -> retrieval-grounded answer + citation
 RAGPipeline.answer_no_retrieval(q)  -> ungrounded LLM answer (for the comparison)
 
-Every grounded answer cites source_doc + source_section. The LLM (Groq) is a
-generation layer only: retrieval selects the evidence, the model just phrases it.
-If retrieval finds nothing above threshold, the pipeline refuses rather than
-guessing.
+Retrieval has two interchangeable back-ends over the same 23 section chunks:
+  * "embed"  - sentence-transformers + FAISS cosine  (semantic; used locally)
+  * "tfidf"  - scikit-learn TF-IDF + cosine          (keyword; used on deploy,
+               where torch/faiss add ~2 GB and can segfault next to TensorFlow)
+The pipeline auto-selects: it uses "embed" if sentence-transformers, faiss and a
+prebuilt index are all present, otherwise "tfidf". Force with env RAG_BACKEND.
+
+Every grounded answer cites source_doc + source_section. The LLM (Groq) only
+phrases the retrieved text; if nothing scores above threshold the pipeline
+refuses instead of guessing.
 """
 import json
 import os
@@ -21,28 +27,65 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import config as C
 
 RAG_DIR = os.path.join(C.PROCESSED, "rag")
-MIN_SCORE = 0.25
+CHUNKS_PATH = os.path.join(RAG_DIR, "chunks.json")
+FAISS_PATH = os.path.join(RAG_DIR, "faiss.index")
+META_PATH = os.path.join(RAG_DIR, "meta.json")
+
+# cosine thresholds below which we refuse (scales differ per back-end)
+MIN_SCORE = {"embed": 0.25, "tfidf": 0.04}
+
+
+def _embed_available():
+    if os.getenv("RAG_BACKEND") == "tfidf":
+        return False
+    if not (os.path.exists(FAISS_PATH) and os.path.exists(META_PATH)):
+        return False
+    try:
+        import faiss  # noqa: F401
+        import sentence_transformers  # noqa: F401
+        return True
+    except Exception:
+        return False
 
 
 class RAGPipeline:
-    def __init__(self):
-        import faiss
-        from sentence_transformers import SentenceTransformer
-        self.meta = json.load(open(os.path.join(RAG_DIR, "meta.json")))
-        self.chunks = json.load(open(os.path.join(RAG_DIR, "chunks.json")))
-        self.index = faiss.read_index(os.path.join(RAG_DIR, "faiss.index"))
-        self.emb = SentenceTransformer(self.meta["model"])
+    def __init__(self, backend=None):
+        self.chunks = json.load(open(CHUNKS_PATH, encoding="utf-8"))
+        self.backend = backend or ("embed" if _embed_available() else "tfidf")
         self._groq = None
+        if self.backend == "embed":
+            import faiss
+            from sentence_transformers import SentenceTransformer
+            self.meta = json.load(open(META_PATH))
+            self.index = faiss.read_index(FAISS_PATH)
+            self.emb = SentenceTransformer(self.meta["model"])
+        else:
+            from sklearn.feature_extraction.text import TfidfVectorizer
+            self.meta = {"model": "tfidf-word(1,2)", "n_chunks": len(self.chunks)}
+            # keep numbers and short tokens ("H", "8.6", "250"); no stop-word list
+            # (corpus is tiny); weight the section heading by repeating it
+            self._vec = TfidfVectorizer(ngram_range=(1, 2), sublinear_tf=True,
+                                        token_pattern=r"(?u)\b[\w.]+\b")
+            docs = [f"{c['heading']} {c['heading']} {c['body']}" for c in self.chunks]
+            self._mat = self._vec.fit_transform(docs)
 
     # ---------- retrieval ----------
     def retrieve(self, query, k=3):
-        q = self.emb.encode([query], normalize_embeddings=True).astype("float32")
-        scores, idx = self.index.search(q, k)
+        if self.backend == "embed":
+            q = self.emb.encode([query], normalize_embeddings=True).astype("float32")
+            scores, idx = self.index.search(q, k)
+            scores, idx = scores[0], idx[0]
+        else:
+            from sklearn.metrics.pairwise import linear_kernel
+            qv = self._vec.transform([query])
+            sims = linear_kernel(qv, self._mat).ravel()
+            idx = np.argsort(sims)[::-1][:k]
+            scores = sims[idx]
         hits = []
-        for s, i in zip(scores[0], idx[0]):
+        for s, i in zip(scores, idx):
             if i < 0:
                 continue
-            c = dict(self.chunks[i])
+            c = dict(self.chunks[int(i)])
             c["score"] = round(float(s), 4)
             hits.append(c)
         return hits
@@ -61,9 +104,10 @@ class RAGPipeline:
                       {"role": "user", "content": user}])
         return r.choices[0].message.content.strip()
 
-    def answer(self, query, k=3):
+    def answer(self, query, k=None):
+        k = k or (3 if self.backend == "embed" else 4)
         hits = self.retrieve(query, k)
-        if not hits or hits[0]["score"] < MIN_SCORE:
+        if not hits or hits[0]["score"] < MIN_SCORE.get(self.backend, 0.1):
             return {"answer": "Not covered by the knowledge base - no supporting "
                               "section found. Escalate to a human engineer.",
                     "source_doc": None, "source_section": None,
@@ -80,10 +124,16 @@ class RAGPipeline:
                   "(max 4 sentences).")
         user = f"Context:\n{context}\n\nQuestion: {query}"
         text = self._chat(system, user)
+        # cite the passage the answer actually used (the model names the section);
+        # fall back to the top retrieved hit
         top = hits[0]
+        for h in hits:
+            if f"section {h['section']}" in text and h["doc"] in text:
+                top = h
+                break
         return {"answer": text, "source_doc": top["doc"],
                 "source_section": top["section"], "source_heading": top["heading"],
-                "retrieved": hits, "grounded": True}
+                "retrieved": hits, "grounded": True, "backend": self.backend}
 
     def answer_no_retrieval(self, query):
         system = ("You are a factory maintenance assistant. Answer from general "
@@ -94,6 +144,7 @@ class RAGPipeline:
 
 if __name__ == "__main__":
     rag = RAGPipeline()
+    print("backend:", rag.backend)
     for q in ["What should I do when an overstrain OSF alert fires?",
               "How often should Type H machines get preventive maintenance?",
               "What is the acceptance tolerance for torque sensor calibration?"]:

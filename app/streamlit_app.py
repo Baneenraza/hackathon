@@ -13,6 +13,10 @@ from datetime import datetime
 
 os.environ.setdefault("HF_HUB_DISABLE_XET", "1")
 os.environ.setdefault("TF_CPP_MIN_LOG_LEVEL", "3")
+# stability on small shared containers (avoids OpenMP oversubscription / oneDNN crashes)
+os.environ.setdefault("OMP_NUM_THREADS", "2")
+os.environ.setdefault("KMP_DUPLICATE_LIB_OK", "TRUE")
+os.environ.setdefault("TF_ENABLE_ONEDNN_OPTS", "0")
 
 import matplotlib
 matplotlib.use("Agg")

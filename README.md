@@ -36,7 +36,7 @@ and knowledge-base evidence describe the *same* machines.
   process sensors ───► │ PredictiveAgent  RF/XGB  (failure prob)     │ │
   turbofan history ──► │                  LSTM    (RUL) + SHAP       │ ├─► PlanningAgent ─► decision package
                        ├────────────────────────────────────────────┤ │      · risk level (rule-based fusion)
-  failure-mode hint ─► │ KnowledgeAgent   SBERT + FAISS + Groq LLM   │ │      · FactorySimulator: 3 what-if scenarios
+  failure-mode hint ─► │ KnowledgeAgent   retrieval + Groq LLM       │ │      · FactorySimulator: 3 what-if scenarios
       / free query     │                  (cites doc + section)      │─┘      · recommendation (+ SOP citation)
                        └────────────────────────────────────────────┘        · requires_human_approval = True
                                                                                           │
@@ -129,8 +129,11 @@ z-score using train statistics; sliding windows (best model: window 50).
 split always evaluated.
 
 **Knowledge base** — PDF text extracted with `pypdf`, chunked by top-level
-numbered section (23 chunks), embedded with `all-MiniLM-L6-v2`, FAISS cosine
-index.
+numbered section (23 chunks). Retrieval has two interchangeable back-ends
+(`src/rag/rag.py`): **semantic** (`all-MiniLM-L6-v2` embeddings + FAISS cosine,
+used locally) and **TF-IDF** (scikit-learn cosine, used on the deployed app to
+avoid a torch+faiss+TensorFlow segfault on small containers). The pipeline
+auto-selects; force with `RAG_BACKEND=tfidf|embed`.
 
 ---
 

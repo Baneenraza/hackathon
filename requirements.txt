@@ -1,12 +1,16 @@
 # ── Deployment / runtime requirements (Streamlit Community Cloud, HF Spaces) ──
 #
-# REQUIRES PYTHON 3.12 (or 3.11). TensorFlow has NO wheels for Python 3.13/3.14 —
-# set the Python version to 3.12 in the Streamlit Cloud app settings, or this
-# build will fail on tensorflow-cpu. A .python-version file (3.12) is included.
+# REQUIRES PYTHON 3.12 (or 3.11). TensorFlow has NO wheels for Python 3.13/3.14.
+# A .python-version file (3.12) is included; also set it in the app settings.
 #
-# Only three packages are pinned exactly — they must match the committed model
-# artifacts (.keras saved with TF 2.21; .joblib / SHAP explainer pickled with
-# scikit-learn 1.9 / shap 0.52). Everything else floats.
+# The RAG retriever runs in TF-IDF mode here (scikit-learn only) — no
+# sentence-transformers / faiss / torch. That avoids ~2 GB of wheels and a
+# torch+faiss+TensorFlow OpenMP segfault seen on Streamlit Cloud. Locally, if
+# sentence-transformers + faiss + the prebuilt index are present, it upgrades to
+# semantic retrieval automatically (see src/rag/rag.py).
+#
+# Exact pins: must match the committed model artifacts (.keras saved with TF 2.21;
+# .joblib / SHAP explainer pickled with scikit-learn 1.9 / shap 0.52).
 
 streamlit
 numpy<2.6
@@ -19,8 +23,6 @@ scikit-learn==1.9.0
 shap==0.52.0
 tensorflow-cpu==2.21.0
 
-sentence-transformers
-faiss-cpu
 groq
 fpdf2
 python-dotenv

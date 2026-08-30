@@ -63,14 +63,12 @@ That means it built on Python 3.13/3.14. Fix without recreating:
 
 ---
 
-## 3. First build (~5–10 min)
+## 3. First build (~5–8 min)
 
-The build log will show pip installing TensorFlow-CPU, PyTorch (pulled by
-`sentence-transformers`), FAISS, etc. This is normal and only happens once.
-
-When it finishes you'll see the app. On the **first run** it also downloads the
-sentence-embedding model `all-MiniLM-L6-v2` (~90 MB) — the first "Run full
-analysis" click will take ~30–60 s; later clicks are fast.
+The build log will show pip installing TensorFlow-CPU, scikit-learn, shap, etc.
+(no PyTorch / FAISS on deploy — the RAG retriever runs in TF-IDF mode). This is
+normal and only happens once. The first "Run full analysis" click loads the
+models into memory (~15–30 s); later clicks are fast.
 
 ---
 
@@ -90,15 +88,17 @@ and the 3-scenario digital-twin table. Then try **APPROVE** → **Log decision**
 
 ---
 
-## 5. If the app crashes with "Oh no." / restarts / runs out of memory
+## 5. If the app crashes ("Oh no." / Segmentation fault / restarts / OOM)
 
-Community Cloud gives ~2.7 GB RAM. TensorFlow + PyTorch + the models sit around
-1.5–2 GB, so it *usually* fits but can be tight. Options, easiest first:
+The deploy build is now lean — no PyTorch/FAISS, TF-IDF retrieval, `tensorflow-cpu`
+only, plus `OMP_NUM_THREADS=2` / `TF_ENABLE_ONEDNN_OPTS=0` set in the app for
+container stability. Loaded footprint is ~800 MB–1.2 GB, comfortably inside
+Community Cloud's ~2.7 GB. If it still misbehaves:
 
-- **Reboot the app** (top-right menu → *Reboot app*) — transient OOM often clears.
-- **Uncheck modalities you're not demoing.** Each unchecked box skips loading
-  that model. If you only need tabular + knowledge, untick the LSTM box.
-- **Switch to Hugging Face Spaces** (free, 16 GB RAM — no tuning needed):
+- **Reboot the app** (⋮ menu → *Reboot app*) — clears transient crashes.
+- **Uncheck modalities you're not demoing** — each unticked box skips loading
+  that model (e.g. untick the LSTM box if you only need tabular + knowledge).
+- **Switch to Hugging Face Spaces** (free, 16 GB RAM):
   - Create a Space, SDK = **Streamlit**, push the same repo.
   - Add `GROQ_API_KEY` under *Settings → Variables and secrets*.
   - In the Space's `README.md` front-matter set `app_file: app/streamlit_app.py`.
