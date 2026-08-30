@@ -1,0 +1,96 @@
+# ─────────────────────────────────────────────────────────────
+# AI Factory Intelligence Command Center — .gitignore
+# ─────────────────────────────────────────────────────────────
+
+# ── Secrets ──────────────────────────────────────────────────
+.env
+.env.*
+!.env.example
+.streamlit/secrets.toml
+*.key
+*.pem
+
+# ── Data ─────────────────────────────────────────────────────
+# Committed on purpose (do NOT ignore): the app needs these at runtime
+#   data/raw/tabular/        data/raw/timeseries/     data/raw/notes/
+#   data/knowledge_base/     data/sample_images/      data/processed/rag/
+#   data/processed/tabular_*.csv
+# Ignored: the bulky image corpus (~123 MB) and runtime output
+data/raw/images/
+data/processed/app_cache/
+data/processed/decisions_log.csv
+data/**/.DS_Store
+
+# ── Models ───────────────────────────────────────────────────
+# Deployed artifacts ARE committed (casting_cnn.keras, lstm_rul.keras,
+# tabular_best.joblib, *_preprocessor.joblib, *_config.json, nlp_*.joblib,
+# shap_tabular.joblib). Only the per-run intermediates are ignored:
+models_registry/_*.joblib
+models_registry/_*.keras
+models_registry/*.h5.tmp
+*.ckpt
+checkpoints/
+
+# ── MLflow (local tracking store — regenerate with the train scripts) ──
+mlruns/
+mlartifacts/
+mlflow.db
+mlflow.db-journal
+
+# ── Reports: keep .md / .png / .json / .csv analysis; drop generated PDFs ──
+reports/app_cache/
+reports/INC-*.pdf
+reports/*_incident_report.pdf
+reports/test_incident_report.pdf
+
+# ── Python ───────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# ── Virtual environments ─────────────────────────────────────
+.venv/
+venv/
+env/
+ENV/
+.python-version
+
+# ── Notebooks ────────────────────────────────────────────────
+.ipynb_checkpoints/
+*-checkpoint.ipynb
+
+# ── Caches from ML libs ──────────────────────────────────────
+.cache/
+~/.keras/
+wandb/
+.hypothesis/
+
+# ── Editors / IDEs ───────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.claude/
+
+# ── OS ───────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
+
+# ── Misc ─────────────────────────────────────────────────────
+*.log
+tmp/
+scratch/

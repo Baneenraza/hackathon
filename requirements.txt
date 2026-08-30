@@ -1,0 +1,22 @@
+# AI Factory Intelligence Command Center - dependencies (Python 3.12)
+pandas
+numpy
+matplotlib
+plotly
+scikit-learn
+xgboost
+tensorflow            # local training; for deployment see requirements-deploy.txt
+opencv-python-headless
+pillow
+shap
+mlflow
+streamlit
+fpdf2
+sentence-transformers
+faiss-cpu
+groq
+kaggle
+python-dotenv
+joblib
+tabulate
+pypdf

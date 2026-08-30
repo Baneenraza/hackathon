@@ -1,0 +1,57 @@
+[
+  {
+    "feature": "torque_Nm",
+    "friendly": "torque",
+    "mean_abs_shap": 0.02804
+  },
+  {
+    "feature": "temp_diff_K",
+    "friendly": "process-air temp difference",
+    "mean_abs_shap": 0.02352
+  },
+  {
+    "feature": "wear_torque",
+    "friendly": "tool-wear x torque (overstrain)",
+    "mean_abs_shap": 0.02245
+  },
+  {
+    "feature": "rot_speed_rpm",
+    "friendly": "rotational speed",
+    "mean_abs_shap": 0.02229
+  },
+  {
+    "feature": "tool_wear_min",
+    "friendly": "tool wear",
+    "mean_abs_shap": 0.01799
+  },
+  {
+    "feature": "power_W",
+    "friendly": "mechanical power",
+    "mean_abs_shap": 0.01602
+  },
+  {
+    "feature": "air_temp_K",
+    "friendly": "air temperature",
+    "mean_abs_shap": 0.00908
+  },
+  {
+    "feature": "process_temp_K",
+    "friendly": "process temperature",
+    "mean_abs_shap": 0.00432
+  },
+  {
+    "feature": "type_L",
+    "friendly": "machine type L",
+    "mean_abs_shap": 0.00168
+  },
+  {
+    "feature": "type_M",
+    "friendly": "machine type M",
+    "mean_abs_shap": 0.00138
+  },
+  {
+    "feature": "type_H",
+    "friendly": "machine type H",
+    "mean_abs_shap": 0.00065
+  }
+]

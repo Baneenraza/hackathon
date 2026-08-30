@@ -1,0 +1,61 @@
+{
+  "baseline_rmse": 11.906,
+  "importances": [
+    {
+      "sensor": "sensor_9",
+      "rmse_increase": 4.815
+    },
+    {
+      "sensor": "sensor_14",
+      "rmse_increase": 4.714
+    },
+    {
+      "sensor": "sensor_4",
+      "rmse_increase": 4.444
+    },
+    {
+      "sensor": "sensor_7",
+      "rmse_increase": 4.382
+    },
+    {
+      "sensor": "sensor_13",
+      "rmse_increase": 3.398
+    },
+    {
+      "sensor": "sensor_2",
+      "rmse_increase": 3.341
+    },
+    {
+      "sensor": "sensor_15",
+      "rmse_increase": 3.225
+    },
+    {
+      "sensor": "sensor_11",
+      "rmse_increase": 2.943
+    },
+    {
+      "sensor": "sensor_12",
+      "rmse_increase": 2.477
+    },
+    {
+      "sensor": "sensor_21",
+      "rmse_increase": 2.21
+    },
+    {
+      "sensor": "sensor_8",
+      "rmse_increase": 1.998
+    },
+    {
+      "sensor": "sensor_3",
+      "rmse_increase": 1.762
+    },
+    {
+      "sensor": "sensor_20",
+      "rmse_increase": 1.302
+    },
+    {
+      "sensor": "sensor_17",
+      "rmse_increase": 0.907
+    }
+  ]
+}

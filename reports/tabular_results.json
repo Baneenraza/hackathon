@@ -1,0 +1,320 @@
+{
+  "rf_baseline": {
+    "val": {
+      "metrics": {
+        "precision": 0.9118,
+        "recall": 0.9118,
+        "f1": 0.9118,
+        "roc_auc": 0.9934
+      },
+      "cm": [
+        [
+          1926,
+          6
+        ],
+        [
+          6,
+          62
+        ]
+      ],
+      "error_by_mode": [
+        {
+          "mode": "TWF",
+          "n_true": 6,
+          "n_detected": 1,
+          "recall_by_mode": 0.167
+        },
+        {
+          "mode": "HDF",
+          "n_true": 27,
+          "n_detected": 27,
+          "recall_by_mode": 1.0
+        },
+        {
+          "mode": "PWF",
+          "n_true": 24,
+          "n_detected": 23,
+          "recall_by_mode": 0.958
+        },
+        {
+          "mode": "OSF",
+          "n_true": 17,
+          "n_detected": 17,
+          "recall_by_mode": 1.0
+        },
+        {
+          "mode": "RNF",
+          "n_true": 4,
+          "n_detected": 0,
+          "recall_by_mode": 0.0
+        }
+      ],
+      "false_positives": 6,
+      "fp_rate": 0.0031
+    },
+    "test": {
+      "metrics": {
+        "precision": 0.8276,
+        "recall": 0.7059,
+        "f1": 0.7619,
+        "roc_auc": 0.9539
+      },
+      "cm": [
+        [
+          1922,
+          10
+        ],
+        [
+          20,
+          48
+        ]
+      ],
+      "error_by_mode": [
+        {
+          "mode": "TWF",
+          "n_true": 12,
+          "n_detected": 0,
+          "recall_by_mode": 0.0
+        },
+        {
+          "mode": "HDF",
+          "n_true": 20,
+          "n_detected": 19,
+          "recall_by_mode": 0.95
+        },
+        {
+          "mode": "PWF",
+          "n_true": 18,
+          "n_detected": 16,
+          "recall_by_mode": 0.889
+        },
+        {
+          "mode": "OSF",
+          "n_true": 18,
+          "n_detected": 17,
+          "recall_by_mode": 0.944
+        },
+        {
+          "mode": "RNF",
+          "n_true": 2,
+          "n_detected": 0,
+          "recall_by_mode": 0.0
+        }
+      ],
+      "false_positives": 10,
+      "fp_rate": 0.0052
+    }
+  },
+  "xgb_default": {
+    "val": {
+      "metrics": {
+        "precision": 0.8378,
+        "recall": 0.9118,
+        "f1": 0.8732,
+        "roc_auc": 0.9913
+      },
+      "cm": [
+        [
+          1920,
+          12
+        ],
+        [
+          6,
+          62
+        ]
+      ],
+      "error_by_mode": [
+        {
+          "mode": "TWF",
+          "n_true": 6,
+          "n_detected": 1,
+          "recall_by_mode": 0.167
+        },
+        {
+          "mode": "HDF",
+          "n_true": 27,
+          "n_detected": 27,
+          "recall_by_mode": 1.0
+        },
+        {
+          "mode": "PWF",
+          "n_true": 24,
+          "n_detected": 23,
+          "recall_by_mode": 0.958
+        },
+        {
+          "mode": "OSF",
+          "n_true": 17,
+          "n_detected": 17,
+          "recall_by_mode": 1.0
+        },
+        {
+          "mode": "RNF",
+          "n_true": 4,
+          "n_detected": 0,
+          "recall_by_mode": 0.0
+        }
+      ],
+      "false_positives": 12,
+      "fp_rate": 0.0062
+    },
+    "test": {
+      "metrics": {
+        "precision": 0.6923,
+        "recall": 0.6618,
+        "f1": 0.6767,
+        "roc_auc": 0.9438
+      },
+      "cm": [
+        [
+          1912,
+          20
+        ],
+        [
+          23,
+          45
+        ]
+      ],
+      "error_by_mode": [
+        {
+          "mode": "TWF",
+          "n_true": 12,
+          "n_detected": 0,
+          "recall_by_mode": 0.0
+        },
+        {
+          "mode": "HDF",
+          "n_true": 20,
+          "n_detected": 19,
+          "recall_by_mode": 0.95
+        },
+        {
+          "mode": "PWF",
+          "n_true": 18,
+          "n_detected": 13,
+          "recall_by_mode": 0.722
+        },
+        {
+          "mode": "OSF",
+          "n_true": 18,
+          "n_detected": 17,
+          "recall_by_mode": 0.944
+        },
+        {
+          "mode": "RNF",
+          "n_true": 2,
+          "n_detected": 0,
+          "recall_by_mode": 0.0
+        }
+      ],
+      "false_positives": 20,
+      "fp_rate": 0.0104
+    }
+  },
+  "xgb_tuned": {
+    "val": {
+      "metrics": {
+        "precision": 0.8732,
+        "recall": 0.9118,
+        "f1": 0.8921,
+        "roc_auc": 0.9931
+      },
+      "cm": [
+        [
+          1923,
+          9
+        ],
+        [
+          6,
+          62
+        ]
+      ],
+      "error_by_mode": [
+        {
+          "mode": "TWF",
+          "n_true": 6,
+          "n_detected": 1,
+          "recall_by_mode": 0.167
+        },
+        {
+          "mode": "HDF",
+          "n_true": 27,
+          "n_detected": 27,
+          "recall_by_mode": 1.0
+        },
+        {
+          "mode": "PWF",
+          "n_true": 24,
+          "n_detected": 23,
+          "recall_by_mode": 0.958
+        },
+        {
+          "mode": "OSF",
+          "n_true": 17,
+          "n_detected": 17,
+          "recall_by_mode": 1.0
+        },
+        {
+          "mode": "RNF",
+          "n_true": 4,
+          "n_detected": 0,
+          "recall_by_mode": 0.0
+        }
+      ],
+      "false_positives": 9,
+      "fp_rate": 0.0047
+    },
+    "test": {
+      "metrics": {
+        "precision": 0.7419,
+        "recall": 0.6765,
+        "f1": 0.7077,
+        "roc_auc": 0.9561
+      },
+      "cm": [
+        [
+          1916,
+          16
+        ],
+        [
+          22,
+          46
+        ]
+      ],
+      "error_by_mode": [
+        {
+          "mode": "TWF",
+          "n_true": 12,
+          "n_detected": 0,
+          "recall_by_mode": 0.0
+        },
+        {
+          "mode": "HDF",
+          "n_true": 20,
+          "n_detected": 19,
+          "recall_by_mode": 0.95
+        },
+        {
+          "mode": "PWF",
+          "n_true": 18,
+          "n_detected": 14,
+          "recall_by_mode": 0.778
+        },
+        {
+          "mode": "OSF",
+          "n_true": 18,
+          "n_detected": 17,
+          "recall_by_mode": 0.944
+        },
+        {
+          "mode": "RNF",
+          "n_true": 2,
+          "n_detected": 0,
+          "recall_by_mode": 0.0
+        }
+      ],
+      "false_positives": 16,
+      "fp_rate": 0.0083
+    }
+  }
+}

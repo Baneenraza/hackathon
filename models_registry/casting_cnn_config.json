@@ -1,0 +1,7 @@
+{
+  "img": 160,
+  "name": "fine_tuned",
+  "class_1": "def_front(defect)",
+  "class_0": "ok_front",
+  "preprocess": "mobilenet_v2.preprocess_input"
+}

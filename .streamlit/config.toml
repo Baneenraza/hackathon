@@ -1,0 +1,8 @@
+[server]
+headless = true
+fileWatcherType = "none"
+maxUploadSize = 10
+
+[theme]
+base = "light"
+primaryColor = "#c44e52"

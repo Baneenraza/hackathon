@@ -1,0 +1,209 @@
+[
+  {
+    "id": "safety_sop.pdf::1.0",
+    "doc": "safety_sop.pdf",
+    "section": "1.0",
+    "heading": "Purpose and Scope",
+    "text": "[safety_sop.pdf section 1.0 - Purpose and Scope] This Standard Operating Procedure defines the mandatory safety steps for operators and maintenance technicians working on CNC milling and turning cells classified as Type L (low-grade), Type M (medium-grade) and Type H (high-grade). It applies to all planned maintenance, unplanned intervention, and inspection activities. No predictive alert from the Command Center authorises autonomous action. Every intervention requires a named human approver as described in section 6.0.",
+    "body": "This Standard Operating Procedure defines the mandatory safety steps for operators and maintenance technicians working on CNC milling and turning cells classified as Type L (low-grade), Type M (medium-grade) and Type H (high-grade). It applies to all planned maintenance, unplanned intervention, and inspection activities. No predictive alert from the Command Center authorises autonomous action. Every intervention requires a named human approver as described in section 6.0.",
+    "n_chars": 476
+  },
+  {
+    "id": "safety_sop.pdf::2.0",
+    "doc": "safety_sop.pdf",
+    "section": "2.0",
+    "heading": "Lockout / Tagout (LOTO)",
+    "text": "[safety_sop.pdf section 2.0 - Lockout / Tagout (LOTO)] 2.1 Before any physical work, isolate the machine at the main disconnect, apply a personal lock, and verify zero energy state at the spindle drive and hydraulic accumulator. 2.2 Rotating spindles must come to a complete mechanical stop. Do not rely on the controller e-stop as an energy isolation device. 2.3 Tag must record technician name, work order number, and expected restoration time.",
+    "body": "2.1 Before any physical work, isolate the machine at the main disconnect, apply a personal lock, and verify zero energy state at the spindle drive and hydraulic accumulator. 2.2 Rotating spindles must come to a complete mechanical stop. Do not rely on the controller e-stop as an energy isolation device. 2.3 Tag must record technician name, work order number, and expected restoration time.",
+    "n_chars": 391
+  },
+  {
+    "id": "safety_sop.pdf::3.0",
+    "doc": "safety_sop.pdf",
+    "section": "3.0",
+    "heading": "Response to Overstrain (OSF) Conditions",
+    "text": "[safety_sop.pdf section 3.0 - Response to Overstrain (OSF) Conditions] 3.1 An overstrain condition is indicated when the product of tool wear and torque exceeds the Type-specific threshold (Type L approx 11,000 min*Nm, Type M approx 12,000, Type H approx 13,000). 3.2 On an OSF alert, immediately reduce feed rate and bring the axis load below 50 percent. Do not continue the current load-bearing pass. 3.3 Inspect the tool for chipping and the workpiece for deformation before restarting. Replace the tool if wear is above 200 minutes.",
+    "body": "3.1 An overstrain condition is indicated when the product of tool wear and torque exceeds the Type-specific threshold (Type L approx 11,000 min*Nm, Type M approx 12,000, Type H approx 13,000). 3.2 On an OSF alert, immediately reduce feed rate and bring the axis load below 50 percent. Do not continue the current load-bearing pass. 3.3 Inspect the tool for chipping and the workpiece for deformation before restarting. Replace the tool if wear is above 200 minutes.",
+    "n_chars": 465
+  },
+  {
+    "id": "safety_sop.pdf::4.0",
+    "doc": "safety_sop.pdf",
+    "section": "4.0",
+    "heading": "Response to Heat Dissipation (HDF) Conditions",
+    "text": "[safety_sop.pdf section 4.0 - Response to Heat Dissipation (HDF) Conditions] 4.1 HDF risk rises when the air-to-process temperature difference falls below 8.6 K while rotational speed is under 1380 rpm. 4.2 Confirm coolant flow and check the heat exchanger inlet filter. Clear any chip blockage around the spindle housing. 4.3 If the temperature difference cannot be restored within 10 minutes, stop the machine and raise a maintenance work order at HIGH urgency.",
+    "body": "4.1 HDF risk rises when the air-to-process temperature difference falls below 8.6 K while rotational speed is under 1380 rpm. 4.2 Confirm coolant flow and check the heat exchanger inlet filter. Clear any chip blockage around the spindle housing. 4.3 If the temperature difference cannot be restored within 10 minutes, stop the machine and raise a maintenance work order at HIGH urgency.",
+    "n_chars": 386
+  },
+  {
+    "id": "safety_sop.pdf::5.0",
+    "doc": "safety_sop.pdf",
+    "section": "5.0",
+    "heading": "Response to Power (PWF) and Tool Wear (TWF) Conditions",
+    "text": "[safety_sop.pdf section 5.0 - Response to Power (PWF) and Tool Wear (TWF) Conditions] 5.1 Power failure risk (PWF) occurs when the mechanical power (torque times angular velocity) leaves the 3.5 - 9 kW band. Check drive tuning and supply voltage; a sustained low-power reading often precedes a stall. 5.2 Tool wear failure (TWF) is expected between 200 and 240 minutes of cumulative tool wear. Schedule a tool change at 200 minutes; never run a tool past 240 minutes. 5.3 Random failures (RNF) have no measurable precursor. Treat any RNF flag as advisory and corroborate with vibration and acoustic inspection.",
+    "body": "5.1 Power failure risk (PWF) occurs when the mechanical power (torque times angular velocity) leaves the 3.5 - 9 kW band. Check drive tuning and supply voltage; a sustained low-power reading often precedes a stall. 5.2 Tool wear failure (TWF) is expected between 200 and 240 minutes of cumulative tool wear. Schedule a tool change at 200 minutes; never run a tool past 240 minutes. 5.3 Random failures (RNF) have no measurable precursor. Treat any RNF flag as advisory and corroborate with vibration and acoustic inspection.",
+    "n_chars": 524
+  },
+  {
+    "id": "safety_sop.pdf::6.0",
+    "doc": "safety_sop.pdf",
+    "section": "6.0",
+    "heading": "Human Approval and Escalation",
+    "text": "[safety_sop.pdf section 6.0 - Human Approval and Escalation] 6.1 The Command Center issues DECISION SUPPORT only. A maintenance supervisor must APPROVE, REJECT or MODIFY every recommendation and record the reason. 6.2 HIGH risk recommendations require sign-off by the shift engineer in addition to the supervisor. 6.3 If a recommendation is rejected, the machine may only keep running under increased monitoring with the residual risk logged in the incident report.",
+    "body": "6.1 The Command Center issues DECISION SUPPORT only. A maintenance supervisor must APPROVE, REJECT or MODIFY every recommendation and record the reason. 6.2 HIGH risk recommendations require sign-off by the shift engineer in addition to the supervisor. 6.3 If a recommendation is rejected, the machine may only keep running under increased monitoring with the residual risk logged in the incident report.",
+    "n_chars": 404
+  },
+  {
+    "id": "safety_sop.pdf::7.0",
+    "doc": "safety_sop.pdf",
+    "section": "7.0",
+    "heading": "Personal Protective Equipment",
+    "text": "[safety_sop.pdf section 7.0 - Personal Protective Equipment] Safety glasses and cut-resistant gloves are mandatory in all machining cells. Hearing protection is required when rotational speed exceeds 2000 rpm. Gloves must not be worn while a spindle is rotating.",
+    "body": "Safety glasses and cut-resistant gloves are mandatory in all machining cells. Hearing protection is required when rotational speed exceeds 2000 rpm. Gloves must not be worn while a spindle is rotating.",
+    "n_chars": 201
+  },
+  {
+    "id": "maintenance_manual.pdf::1.0",
+    "doc": "maintenance_manual.pdf",
+    "section": "1.0",
+    "heading": "Machine Types and Duty Ratings",
+    "text": "[maintenance_manual.pdf section 1.0 - Machine Types and Duty Ratings] Type L cells are rated for light-duty batch work and tolerate the widest process variation. Type M cells are the general-purpose workhorse. Type H cells run tight-tolerance parts and have the lowest allowable overstrain margin. Maintenance intervals scale with duty: L every 500 machine-hours, M every 350, H every 250.",
+    "body": "Type L cells are rated for light-duty batch work and tolerate the widest process variation. Type M cells are the general-purpose workhorse. Type H cells run tight-tolerance parts and have the lowest allowable overstrain margin. Maintenance intervals scale with duty: L every 500 machine-hours, M every 350, H every 250.",
+    "n_chars": 319
+  },
+  {
+    "id": "maintenance_manual.pdf::2.0",
+    "doc": "maintenance_manual.pdf",
+    "section": "2.0",
+    "heading": "Preventive Maintenance Schedule",
+    "text": "[maintenance_manual.pdf section 2.0 - Preventive Maintenance Schedule] 2.1 Daily: check coolant level and concentration, inspect way covers, confirm air temperature is within 295 - 305 K and process temperature is no more than 12 K above air temperature. 2.2 Weekly: lubricate ball screws, verify spindle runout, download the controller fault log. 2.3 At each PM interval: replace spindle coolant filter, check drive belt tension, calibrate the torque sensor per the Calibration Checklist.",
+    "body": "2.1 Daily: check coolant level and concentration, inspect way covers, confirm air temperature is within 295 - 305 K and process temperature is no more than 12 K above air temperature. 2.2 Weekly: lubricate ball screws, verify spindle runout, download the controller fault log. 2.3 At each PM interval: replace spindle coolant filter, check drive belt tension, calibrate the torque sensor per the Calibration Checklist.",
+    "n_chars": 418
+  },
+  {
+    "id": "maintenance_manual.pdf::3.0",
+    "doc": "maintenance_manual.pdf",
+    "section": "3.0",
+    "heading": "Tool Wear Management (TWF)",
+    "text": "[maintenance_manual.pdf section 3.0 - Tool Wear Management (TWF)] 3.1 Tool wear is tracked in cumulative minutes of cutting time. The wear life for standard carbide tooling is 200 minutes nominal, 240 minutes absolute maximum. 3.2 Log every tool change with the tool ID and the wear reading at removal. A tool removed below 150 minutes indicates a feeds-and-speeds problem to investigate. 3.3 Worn tools raise cutting torque, which compounds overstrain risk on Type H cells. Prioritise tool changes there.",
+    "body": "3.1 Tool wear is tracked in cumulative minutes of cutting time. The wear life for standard carbide tooling is 200 minutes nominal, 240 minutes absolute maximum. 3.2 Log every tool change with the tool ID and the wear reading at removal. A tool removed below 150 minutes indicates a feeds-and-speeds problem to investigate. 3.3 Worn tools raise cutting torque, which compounds overstrain risk on Type H cells. Prioritise tool changes there.",
+    "n_chars": 439
+  },
+  {
+    "id": "maintenance_manual.pdf::4.0",
+    "doc": "maintenance_manual.pdf",
+    "section": "4.0",
+    "heading": "Thermal System and Heat Dissipation (HDF)",
+    "text": "[maintenance_manual.pdf section 4.0 - Thermal System and Heat Dissipation (HDF)] 4.1 The chiller must hold the process-to-air temperature difference at or above 8.6 K under load. A shrinking difference with rotational speed below 1380 rpm is the classic HDF precursor. 4.2 Clean the heat exchanger monthly. A fouled exchanger is the most common root cause of repeat HDF alerts. 4.3 If HDF alerts repeat after cleaning, check the coolant pump impeller and the thermostatic expansion valve.",
+    "body": "4.1 The chiller must hold the process-to-air temperature difference at or above 8.6 K under load. A shrinking difference with rotational speed below 1380 rpm is the classic HDF precursor. 4.2 Clean the heat exchanger monthly. A fouled exchanger is the most common root cause of repeat HDF alerts. 4.3 If HDF alerts repeat after cleaning, check the coolant pump impeller and the thermostatic expansion valve.",
+    "n_chars": 407
+  },
+  {
+    "id": "maintenance_manual.pdf::5.0",
+    "doc": "maintenance_manual.pdf",
+    "section": "5.0",
+    "heading": "Drivetrain, Power and Overstrain (PWF, OSF)",
+    "text": "[maintenance_manual.pdf section 5.0 - Drivetrain, Power and Overstrain (PWF, OSF)] 5.1 Mechanical power should sit between 3.5 and 9 kW during a normal cut. Readings outside that band trip the PWF logic. Low power with rising torque means the spindle is bogging down - reduce depth of cut. 5.2 Overstrain (OSF) is driven by tool wear times torque. Keep the product under the Type threshold (L 11000, M 12000, H 13000 min*Nm). 5.3 After any OSF event, inspect the spindle bearings and the axis couplings for backlash before returning the machine to service.",
+    "body": "5.1 Mechanical power should sit between 3.5 and 9 kW during a normal cut. Readings outside that band trip the PWF logic. Low power with rising torque means the spindle is bogging down - reduce depth of cut. 5.2 Overstrain (OSF) is driven by tool wear times torque. Keep the product under the Type threshold (L 11000, M 12000, H 13000 min*Nm). 5.3 After any OSF event, inspect the spindle bearings and the axis couplings for backlash before returning the machine to service.",
+    "n_chars": 473
+  },
+  {
+    "id": "maintenance_manual.pdf::6.0",
+    "doc": "maintenance_manual.pdf",
+    "section": "6.0",
+    "heading": "Corrective Maintenance Workflow",
+    "text": "[maintenance_manual.pdf section 6.0 - Corrective Maintenance Workflow] 6.1 Triage the alert against sensor history in the Command Center. Confirm the failure mode (TWF/HDF/PWF/OSF/RNF). 6.2 Raise a work order with urgency LOW, MEDIUM or HIGH. HIGH is reserved for conditions that can cause tool breakage, thermal damage or an unplanned stop within one shift. 6.3 Perform LOTO per the Safety SOP section 2.0. Complete the repair, update the maintenance log, and run a 15-minute verification cut before release.",
+    "body": "6.1 Triage the alert against sensor history in the Command Center. Confirm the failure mode (TWF/HDF/PWF/OSF/RNF). 6.2 Raise a work order with urgency LOW, MEDIUM or HIGH. HIGH is reserved for conditions that can cause tool breakage, thermal damage or an unplanned stop within one shift. 6.3 Perform LOTO per the Safety SOP section 2.0. Complete the repair, update the maintenance log, and run a 15-minute verification cut before release.",
+    "n_chars": 438
+  },
+  {
+    "id": "maintenance_manual.pdf::7.0",
+    "doc": "maintenance_manual.pdf",
+    "section": "7.0",
+    "heading": "Spare Parts and Consumables",
+    "text": "[maintenance_manual.pdf section 7.0 - Spare Parts and Consumables] Keep on hand: carbide insert sets for each cell, two spindle coolant filters per machine, one spare drive belt per Type, and a calibrated reference torque cell. Reorder when stock falls below 30 percent.",
+    "body": "Keep on hand: carbide insert sets for each cell, two spindle coolant filters per machine, one spare drive belt per Type, and a calibrated reference torque cell. Reorder when stock falls below 30 percent.",
+    "n_chars": 203
+  },
+  {
+    "id": "maintenance_manual.pdf::8.0",
+    "doc": "maintenance_manual.pdf",
+    "section": "8.0",
+    "heading": "Record Keeping",
+    "text": "[maintenance_manual.pdf section 8.0 - Record Keeping] Every intervention must produce a dated record containing the machine ID, failure mode, parts used, technician, approver, and the post-repair verification result. Records feed the reliability model and must not be skipped.",
+    "body": "Every intervention must produce a dated record containing the machine ID, failure mode, parts used, technician, approver, and the post-repair verification result. Records feed the reliability model and must not be skipped.",
+    "n_chars": 222
+  },
+  {
+    "id": "calibration_checklist.pdf::1.0",
+    "doc": "calibration_checklist.pdf",
+    "section": "1.0",
+    "heading": "Scope",
+    "text": "[calibration_checklist.pdf section 1.0 - Scope] This checklist covers periodic calibration of the sensors that feed the predictive models: air and process temperature, rotational speed, torque, and the tool-wear timer. Perform at every preventive maintenance interval and after any sensor replacement.",
+    "body": "This checklist covers periodic calibration of the sensors that feed the predictive models: air and process temperature, rotational speed, torque, and the tool-wear timer. Perform at every preventive maintenance interval and after any sensor replacement.",
+    "n_chars": 253
+  },
+  {
+    "id": "calibration_checklist.pdf::2.0",
+    "doc": "calibration_checklist.pdf",
+    "section": "2.0",
+    "heading": "Pre-Calibration Checks",
+    "text": "[calibration_checklist.pdf section 2.0 - Pre-Calibration Checks] 2.1 Machine at ambient, powered on for at least 30 minutes for thermal stability. 2.2 Reference instruments in date: calibrated RTD, optical tachometer, reference torque cell. 2.3 Record ambient air temperature; it should read 295 - 305 K.",
+    "body": "2.1 Machine at ambient, powered on for at least 30 minutes for thermal stability. 2.2 Reference instruments in date: calibrated RTD, optical tachometer, reference torque cell. 2.3 Record ambient air temperature; it should read 295 - 305 K.",
+    "n_chars": 239
+  },
+  {
+    "id": "calibration_checklist.pdf::3.0",
+    "doc": "calibration_checklist.pdf",
+    "section": "3.0",
+    "heading": "Temperature Sensor Calibration",
+    "text": "[calibration_checklist.pdf section 3.0 - Temperature Sensor Calibration] 3.1 Compare the air-temperature RTD against the reference at two points. Acceptance: within 0.5 K. 3.2 Compare process-temperature RTD similarly. Acceptance: within 0.5 K. 3.3 Verify the derived air-to-process difference reads at least 8.6 K under a light test load. A smaller reading with low rpm is the HDF warning band - investigate before returning to service.",
+    "body": "3.1 Compare the air-temperature RTD against the reference at two points. Acceptance: within 0.5 K. 3.2 Compare process-temperature RTD similarly. Acceptance: within 0.5 K. 3.3 Verify the derived air-to-process difference reads at least 8.6 K under a light test load. A smaller reading with low rpm is the HDF warning band - investigate before returning to service.",
+    "n_chars": 364
+  },
+  {
+    "id": "calibration_checklist.pdf::4.0",
+    "doc": "calibration_checklist.pdf",
+    "section": "4.0",
+    "heading": "Rotational Speed Calibration",
+    "text": "[calibration_checklist.pdf section 4.0 - Rotational Speed Calibration] 4.1 Command 1500 rpm and measure with the optical tachometer. Acceptance: within 15 rpm. 4.2 Repeat at 2500 rpm. Acceptance: within 25 rpm. 4.3 Confirm the controller flags speeds below 1380 rpm as an HDF-relevant operating region.",
+    "body": "4.1 Command 1500 rpm and measure with the optical tachometer. Acceptance: within 15 rpm. 4.2 Repeat at 2500 rpm. Acceptance: within 25 rpm. 4.3 Confirm the controller flags speeds below 1380 rpm as an HDF-relevant operating region.",
+    "n_chars": 231
+  },
+  {
+    "id": "calibration_checklist.pdf::5.0",
+    "doc": "calibration_checklist.pdf",
+    "section": "5.0",
+    "heading": "Torque Sensor Calibration",
+    "text": "[calibration_checklist.pdf section 5.0 - Torque Sensor Calibration] 5.1 Apply known loads with the reference torque cell at 10, 30 and 50 Nm. Acceptance: within 1 Nm or 2 percent, whichever is larger. 5.2 Check that the overstrain calculation (tool wear times torque) uses the corrected torque value. 5.3 Verify the Type-specific OSF thresholds are configured: L 11000, M 12000, H 13000 min*Nm.",
+    "body": "5.1 Apply known loads with the reference torque cell at 10, 30 and 50 Nm. Acceptance: within 1 Nm or 2 percent, whichever is larger. 5.2 Check that the overstrain calculation (tool wear times torque) uses the corrected torque value. 5.3 Verify the Type-specific OSF thresholds are configured: L 11000, M 12000, H 13000 min*Nm.",
+    "n_chars": 326
+  },
+  {
+    "id": "calibration_checklist.pdf::6.0",
+    "doc": "calibration_checklist.pdf",
+    "section": "6.0",
+    "heading": "Tool-Wear Timer Verification",
+    "text": "[calibration_checklist.pdf section 6.0 - Tool-Wear Timer Verification] 6.1 Confirm the cumulative wear counter increments only during spindle-on cutting time. 6.2 Verify the 200-minute change reminder and the 240-minute hard stop are both active. 6.3 Reset the counter only when a tool change is logged with a tool ID.",
+    "body": "6.1 Confirm the cumulative wear counter increments only during spindle-on cutting time. 6.2 Verify the 200-minute change reminder and the 240-minute hard stop are both active. 6.3 Reset the counter only when a tool change is logged with a tool ID.",
+    "n_chars": 247
+  },
+  {
+    "id": "calibration_checklist.pdf::7.0",
+    "doc": "calibration_checklist.pdf",
+    "section": "7.0",
+    "heading": "Power Calculation Check",
+    "text": "[calibration_checklist.pdf section 7.0 - Power Calculation Check] Confirm mechanical power is computed as torque times angular velocity and that the PWF band of 3.5 - 9 kW is configured. Simulate an out-of-band value and confirm the alert fires.",
+    "body": "Confirm mechanical power is computed as torque times angular velocity and that the PWF band of 3.5 - 9 kW is configured. Simulate an out-of-band value and confirm the alert fires.",
+    "n_chars": 179
+  },
+  {
+    "id": "calibration_checklist.pdf::8.0",
+    "doc": "calibration_checklist.pdf",
+    "section": "8.0",
+    "heading": "Sign-Off",
+    "text": "[calibration_checklist.pdf section 8.0 - Sign-Off] Record every measured value, pass/fail, the technician, and the approving supervisor. Any FAIL requires a repeat calibration after correction. File the completed checklist with the machine maintenance record.",
+    "body": "Record every measured value, pass/fail, the technician, and the approving supervisor. Any FAIL requires a repeat calibration after correction. File the completed checklist with the machine maintenance record.",
+    "n_chars": 208
+  }
+]
